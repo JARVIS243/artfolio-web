@@ -1,6 +1,21 @@
-/* =====================
-   RESET & BASE
-===================== */
+/* =====================================================
+   GLOBAL RESET & VARIABLES
+===================================================== */
+:root {
+  --bg-main: #0b0b0f;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --text-main: #ffffff;
+  --text-muted: #b5b5b5;
+  --accent: #25d366;
+  --accent-glow: rgba(37, 211, 102, 0.5);
+  --gradient-main: linear-gradient(135deg, #ffffff, #b5b5b5);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --transition-fast: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,52 +24,55 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0c0c0c;
-  color: #f1f1f1;
+  background: radial-gradient(circle at top, #141420, var(--bg-main) 60%);
+  color: var(--text-main);
   line-height: 1.7;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* =====================
-   HEADER (GLASS EFFECT)
-===================== */
+/* =====================================================
+   HEADER – GLASS + PREMIUM
+===================================================== */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  background: rgba(12, 12, 12, 0.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 22px 60px;
+  background: rgba(10, 10, 15, 0.65);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .logo img {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
 }
 
 .logo span {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 nav a {
-  margin-left: 28px;
+  margin-left: 30px;
   text-decoration: none;
-  color: #bdbdbd;
+  color: var(--text-muted);
   font-size: 14px;
+  letter-spacing: 1px;
   position: relative;
-  transition: color 0.3s;
+  transition: var(--transition-fast);
 }
 
 nav a::after {
@@ -64,8 +82,8 @@ nav a::after {
   height: 2px;
   left: 0;
   bottom: -6px;
-  background: #fff;
-  transition: 0.3s;
+  background: var(--gradient-main);
+  transition: var(--transition-fast);
 }
 
 nav a:hover,
@@ -78,103 +96,110 @@ nav a.active::after {
   width: 100%;
 }
 
-/* =====================
-   HERO
-===================== */
+/* =====================================================
+   HERO – WOW FACTOR
+===================================================== */
 .hero {
+  padding: 140px 20px 120px;
   text-align: center;
-  padding: 120px 20px 100px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 60%);
+  z-index: -1;
 }
 
 .hero h1,
 .hero h2 {
-  font-size: 46px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  background: linear-gradient(135deg, #ffffff, #b5b5b5);
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: var(--gradient-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero p {
-  margin-top: 16px;
-  color: #a5a5a5;
-  font-size: 16px;
-  max-width: 620px;
+  margin-top: 18px;
+  font-size: 17px;
+  color: var(--text-muted);
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  animation: fadeUp 1.6s ease forwards;
 }
 
-/* =====================
-   SECTIONS
-===================== */
+/* =====================================================
+   SECTION BASE
+===================================================== */
 section {
-  padding: 80px 50px;
+  padding: 90px 60px;
 }
 
 h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 24px;
 }
 
-/* =====================
-   ABOUT
-===================== */
-.about {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
-
-.about p {
-  color: #cfcfcf;
-  margin-bottom: 22px;
-  font-size: 15px;
-}
-
-/* =====================
-   ABOUT IMAGE LAYOUT
-===================== */
+/* =====================================================
+   ABOUT – PREMIUM CARD
+===================================================== */
 .about-layout {
+  max-width: 1100px;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 50px;
+  gap: 60px;
   align-items: center;
-  text-align: left;
 }
 
 .about-image img {
   width: 100%;
-  max-width: 320px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  max-width: 340px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  transition: var(--transition-slow);
 }
 
-/* =====================
-   ORDER PAGE
-===================== */
+.about-image img:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.about p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+/* =====================================================
+   ORDER PAGE – INTERACTIVE PREMIUM
+===================================================== */
 .order-preview {
-  max-width: 900px;
-  margin: 60px auto;
-  background: linear-gradient(145deg, #111, #1a1a1a);
-  padding: 60px 40px;
-  border-radius: 24px;
-  border: 1px solid #222;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  max-width: 1000px;
+  margin: auto;
+  background: var(--bg-card);
+  backdrop-filter: blur(22px);
+  border-radius: var(--radius-lg);
+  padding: 70px 50px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.7);
 }
 
 .order-preview h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .order-item {
-  margin-bottom: 40px;
-  padding-bottom: 35px;
-  border-bottom: 1px dashed rgba(255,255,255,0.08);
+  margin-bottom: 45px;
+  padding-bottom: 40px;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
 }
 
 .order-item:last-child {
@@ -183,116 +208,103 @@ h2 {
 
 .order-item h3 {
   font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .order-item p {
-  color: #cfcfcf;
+  color: var(--text-muted);
   font-size: 15px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-/* ORDER BUTTONS (WHATSAPP STYLE) */
 .order-options {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  gap: 18px;
 }
 
+/* WHATSAPP BUTTON MAGIC */
 .order-btn {
   background: linear-gradient(135deg, #25d366, #128c7e);
   color: #fff;
   border: none;
-  padding: 15px 32px;
+  padding: 16px 36px;
   font-size: 15px;
   font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.35s ease;
-  letter-spacing: 0.5px;
+  transition: var(--transition-fast);
+  box-shadow: 0 0 0 transparent;
 }
 
 .order-btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 14px 35px rgba(37, 211, 102, 0.45);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 15px 45px var(--accent-glow);
 }
 
-.order-preview .note {
-  font-size: 14px;
-  color: #aaa;
-  margin-top: 30px;
-}
-
-/* =====================
-   GALLERY
-===================== */
-.gallery-section {
-  text-align: center;
-}
-
+/* =====================================================
+   GALLERY – LUXURY FEEL
+===================================================== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  gap: 28px;
 }
 
 .art-card {
-  position: relative;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   overflow: hidden;
+  position: relative;
   cursor: pointer;
-  background: #0f0f0f;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #0f0f14;
+  transition: var(--transition-slow);
+}
+
+.art-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.8);
 }
 
 .art-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.art-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 55px rgba(0,0,0,0.8);
+  transition: var(--transition-slow);
 }
 
 .art-card:hover img {
-  transform: scale(1.12);
+  transform: scale(1.15);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.1));
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   display: flex;
   align-items: flex-end;
-  padding: 20px;
+  padding: 22px;
   opacity: 0;
-  transition: 0.4s;
+  transition: var(--transition-fast);
 }
 
 .art-card:hover .overlay {
   opacity: 1;
 }
 
-/* =====================
+/* =====================================================
    LIGHTBOX
-===================== */
+===================================================== */
 #lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0,0,0,0.92);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s;
-  z-index: 999;
+  transition: var(--transition-fast);
+  z-index: 2000;
 }
 
 #lightbox.active {
@@ -303,92 +315,81 @@ h2 {
 #lightbox img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
 }
 
-/* =====================
-   CONTACT
-===================== */
-.contact {
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
-}
-
+/* =====================================================
+   CONTACT ICONS – NEON TOUCH
+===================================================== */
 .contact-icons {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  margin: 35px 0;
+  gap: 28px;
+  margin-top: 40px;
 }
 
 .contact-icons a {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: #111;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
   font-size: 22px;
-  transition: all 0.3s ease;
-  border: 1px solid #222;
+  color: #fff;
+  transition: var(--transition-fast);
 }
 
 .contact-icons a:hover {
+  transform: translateY(-6px) scale(1.1);
   background: #fff;
   color: #000;
-  transform: translateY(-4px);
 }
 
-/* =====================
-   GOOGLE MAP
-===================== */
-.map-wrapper {
-  margin-top: 40px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #1f1f1f;
-}
-
-.map-wrapper iframe {
-  width: 100%;
-  height: 350px;
-}
-
-/* =====================
+/* =====================================================
    FOOTER
-===================== */
+===================================================== */
 footer {
   text-align: center;
-  padding: 30px 20px;
-  border-top: 1px solid #1f1f1f;
-  color: #888;
+  padding: 35px 20px;
+  border-top: 1px solid var(--border-soft);
   font-size: 14px;
+  color: var(--text-muted);
 }
 
-/* =====================
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
    RESPONSIVE
-===================== */
+===================================================== */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     padding: 20px;
   }
 
-  nav a {
-    margin: 0 12px;
-  }
-
   section {
-    padding: 60px 20px;
+    padding: 70px 20px;
   }
 
   .hero h1,
   .hero h2 {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   .about-layout {
@@ -396,12 +397,8 @@ footer {
     text-align: center;
   }
 
-  .about-image img {
-    margin: auto;
-  }
-
-  .order-preview {
-    padding: 40px 20px;
+  .order-options {
+    flex-direction: column;
   }
 
   .order-btn {
