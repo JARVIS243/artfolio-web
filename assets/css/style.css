@@ -16,15 +16,16 @@ body {
 }
 
 /* =====================
-   HEADER
+   HEADER (GLASS EFFECT)
 ===================== */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background: rgba(12, 12, 12, 0.95);
-  border-bottom: 1px solid #1f1f1f;
+  background: rgba(12, 12, 12, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -82,21 +83,25 @@ nav a.active::after {
 ===================== */
 .hero {
   text-align: center;
-  padding: 110px 20px 90px;
+  padding: 120px 20px 100px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
 }
 
 .hero h1,
 .hero h2 {
-  font-size: 44px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #ffffff, #b5b5b5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-  margin-top: 14px;
-  color: #9e9e9e;
+  margin-top: 16px;
+  color: #a5a5a5;
   font-size: 16px;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -130,7 +135,25 @@ h2 {
 }
 
 /* =====================
-   ORDER PAGE STYLE
+   ABOUT IMAGE LAYOUT
+===================== */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  align-items: center;
+  text-align: left;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* =====================
+   ORDER PAGE
 ===================== */
 .order-preview {
   max-width: 900px;
@@ -146,101 +169,60 @@ h2 {
 .order-preview h2 {
   font-size: 36px;
   margin-bottom: 40px;
-  color: #fff;
 }
 
 .order-item {
   margin-bottom: 40px;
+  padding-bottom: 35px;
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+
+.order-item:last-child {
+  border-bottom: none;
 }
 
 .order-item h3 {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #fff;
 }
 
 .order-item p {
   color: #cfcfcf;
   font-size: 15px;
   margin-bottom: 16px;
-  line-height: 1.6;
 }
 
-/* =====================
-   ORDER BUTTONS
-===================== */
-.order-btn {
-  background: linear-gradient(135deg, #ff7a18, #af002d);
-  color: #fff;
-  border: none;
-  padding: 16px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  margin: 5px;
-}
-
-.order-btn:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 30px rgba(255, 122, 24, 0.6);
-}
-
-/* Order Buttons Container */
+/* ORDER BUTTONS (WHATSAPP STYLE) */
 .order-options {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  margin-top: 20px;
 }
 
-/* Notes under order section */
-.order-preview p.note {
+.order-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  border: none;
+  padding: 15px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  letter-spacing: 0.5px;
+}
+
+.order-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 14px 35px rgba(37, 211, 102, 0.45);
+}
+
+.order-preview .note {
   font-size: 14px;
   color: #aaa;
   margin-top: 30px;
-}
-
-/* =====================
-   RESPONSIVE
-===================== */
-@media (max-width: 768px) {
-  .order-preview {
-    padding: 40px 20px;
-  }
-
-  .order-btn {
-    flex: 1 1 100%;
-    max-width: 100%;
-    margin-bottom: 12px;
-  }
-}
-
-/* =====================
-   BUTTONS
-===================== */
-.show-more-wrapper {
-  margin-top: 30px;
-}
-
-.show-more-btn {
-  padding: 12px 42px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #ffffff, #dcdcdc);
-  color: #000;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.35s ease;
-  display: inline-block;
-}
-
-.show-more-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
 }
 
 /* =====================
@@ -262,7 +244,8 @@ h2 {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  background: #111;
+  background: #0f0f0f;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .art-card img {
@@ -272,6 +255,11 @@ h2 {
   transition: transform 0.6s ease;
 }
 
+.art-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.8);
+}
+
 .art-card:hover img {
   transform: scale(1.12);
 }
@@ -279,17 +267,12 @@ h2 {
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0.1)
-  );
+  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.1));
   display: flex;
   align-items: flex-end;
   padding: 20px;
   opacity: 0;
   transition: 0.4s;
-  font-size: 16px;
 }
 
 .art-card:hover .overlay {
@@ -321,7 +304,6 @@ h2 {
   max-width: 90%;
   max-height: 90%;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
 /* =====================
@@ -333,12 +315,6 @@ h2 {
   text-align: center;
 }
 
-.contact p {
-  color: #cfcfcf;
-  margin-bottom: 20px;
-}
-
-/* CONTACT ICON BUTTONS */
 .contact-icons {
   display: flex;
   justify-content: center;
@@ -379,25 +355,6 @@ h2 {
 .map-wrapper iframe {
   width: 100%;
   height: 350px;
-  border: 0;
-}
-
-/* =====================
-   ABOUT IMAGE LAYOUT
-===================== */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  align-items: center;
-  text-align: left;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 /* =====================
@@ -444,11 +401,10 @@ footer {
   }
 
   .order-preview {
-    padding: 50px 20px;
+    padding: 40px 20px;
   }
 
   .order-btn {
     width: 100%;
-    margin-bottom: 15px;
   }
 }
