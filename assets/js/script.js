@@ -193,3 +193,18 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+const mobileReveal = document.querySelectorAll(".mobile-reveal");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+mobileReveal.forEach(el => observer.observe(el));
