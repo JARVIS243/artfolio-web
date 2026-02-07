@@ -217,3 +217,13 @@ window.addEventListener("scroll", () => {
   const progress = (scrollTop / scrollHeight) * 100;
   document.getElementById("scroll-progress").style.width = progress + "%";
 });
+
+const backBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  backBtn.classList.toggle("show", window.scrollY > 400);
+});
+
+backBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
