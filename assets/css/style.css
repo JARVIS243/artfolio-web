@@ -133,13 +133,14 @@ nav a.active::after {
    SECTIONS
 ===================== */
 section {
-  padding: 80px 50px;
+  padding: 90px 50px;
 }
 
 h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 34px;
   font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 /* =====================
@@ -520,6 +521,7 @@ footer {
     margin-bottom: 15px;
   }
 }
+
 
 
 
