@@ -244,3 +244,26 @@ document.querySelectorAll(".art-card").forEach(card => {
     card.style.transform = "rotateX(0) rotateY(0)";
   });
 });
+
+let currentIndex = 0;
+
+function openLightbox(src, index) {
+  currentIndex = index;
+  lightboxImg.src = src;
+  lightbox.classList.add("active");
+}
+
+let startX = 0;
+
+lightbox.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  if (endX < startX - 50) currentIndex++;
+  if (endX > startX + 50) currentIndex--;
+
+  currentIndex = Math.max(1, Math.min(TOTAL_IMAGES, currentIndex));
+  lightboxImg.src = `${IMAGE_PATH}img${currentIndex}.jpg`;
+});
