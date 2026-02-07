@@ -107,11 +107,17 @@
 </a>
 
 <div id="page-transition"></div>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
 
 </body>
   <div id="scroll-progress"></div>
 
 </html>
+
 
 
 
