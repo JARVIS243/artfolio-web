@@ -88,3 +88,29 @@ if (sessionStorage.getItem("introPlayed")) {
 } else {
   sessionStorage.setItem("introPlayed", "true");
 }
+
+const transition = document.getElementById("page-transition");
+
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    if (link.target === "_blank") return;
+    e.preventDefault();
+    transition.classList.add("active");
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 500);
+  });
+});
+
+const transition = document.getElementById("page-transition");
+
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    if (link.target === "_blank") return;
+    e.preventDefault();
+    transition.classList.add("active");
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 500);
+  });
+});
