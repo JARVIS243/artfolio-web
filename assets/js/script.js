@@ -1,3 +1,40 @@
+const quotes = [
+  {
+    title: "Where Art Meets Emotion",
+    sub: "A curated collection of my creative journey"
+  },
+  {
+    title: "Every Portrait Tells a Story",
+    sub: "Moments captured with soul and detail"
+  },
+  {
+    title: "Creativity Beyond Canvas",
+    sub: "Blending imagination with digital art"
+  },
+  {
+    title: "Art That Feels Personal",
+    sub: "Because emotions deserve expression"
+  }
+];
+
+let index = 0;
+const titleEl = document.getElementById("hero-quote");
+const subEl = document.getElementById("hero-sub");
+
+setInterval(() => {
+  titleEl.style.opacity = 0;
+  subEl.style.opacity = 0;
+
+  setTimeout(() => {
+    index = (index + 1) % quotes.length;
+    titleEl.textContent = quotes[index].title;
+    subEl.textContent = quotes[index].sub;
+
+    titleEl.style.opacity = 1;
+    subEl.style.opacity = 1;
+  }, 600);
+}, 4000);
+
 /* ===============================
    IMAGE CONFIG
 ================================ */
@@ -114,3 +151,4 @@ orderButtons.forEach(btn => {
     window.open(url, "_blank");
   });
 });
+
