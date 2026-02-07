@@ -82,3 +82,9 @@ lightbox.addEventListener("touchend", e => {
   currentIndex = Math.max(1, Math.min(TOTAL_IMAGES, currentIndex));
   lightboxImg.src = `${IMAGE_PATH}img${currentIndex}.jpg`;
 });
+
+if (sessionStorage.getItem("introPlayed")) {
+  document.getElementById("intro").remove();
+} else {
+  sessionStorage.setItem("introPlayed", "true");
+}
