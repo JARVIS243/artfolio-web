@@ -143,6 +143,46 @@ h2 {
 }
 
 /* =====================
+   PREMIUM BUTTON SYSTEM
+===================== */
+.btn {
+  display: inline-block;
+  padding: 16px 48px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), #5a3fd6);
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(127, 90, 240, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 35px 70px rgba(127, 90, 240, 0.6);
+}
+
+/* Outline Button */
+.btn-outline {
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+/* =====================
    ABOUT
 ===================== */
 .about {
@@ -480,6 +520,7 @@ footer {
     margin-bottom: 15px;
   }
 }
+
 
 
 
