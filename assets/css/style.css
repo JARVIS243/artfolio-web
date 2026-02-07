@@ -616,3 +616,79 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===============================
+   MOBILE PERFORMANCE BOOST
+================================ */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+  }
+
+  section, img, button {
+    will-change: transform, opacity;
+  }
+}
+
+/* ===============================
+   MOBILE SCROLL ANIMATION
+================================ */
+@media (max-width: 768px) {
+  .mobile-reveal {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  button, .btn, a {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  button:active, .btn:active, a:active {
+    transform: scale(0.94);
+  }
+}
+
+@media (max-width: 768px) {
+  .float {
+    animation: floatSoft 6s ease-in-out infinite;
+  }
+
+  @keyframes floatSoft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: y proximity;
+  }
+
+  section {
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+img {
+  content-visibility: auto;
+}
