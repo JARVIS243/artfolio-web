@@ -804,3 +804,17 @@ img {
 @keyframes fadeOut {
   to { opacity: 0; pointer-events: none; }
 }
+
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: #0c0c0c;
+  z-index: 9999;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+}
+
+#page-transition.active {
+  transform: scaleY(1);
+}
