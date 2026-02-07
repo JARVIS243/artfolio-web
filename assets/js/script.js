@@ -1,4 +1,4 @@
-const quotes = [
+const heroQuotes = [
   {
     title: "Where Art Meets Emotion",
     sub: "A curated collection of my creative journey"
@@ -8,32 +8,63 @@ const quotes = [
     sub: "Moments captured with soul and detail"
   },
   {
-    title: "Creativity Beyond Canvas",
-    sub: "Blending imagination with digital art"
-  },
-  {
     title: "Art That Feels Personal",
     sub: "Because emotions deserve expression"
+  },
+  {
+    title: "Creativity Beyond Canvas",
+    sub: "Turning imagination into timeless art"
   }
 ];
 
-let index = 0;
-const titleEl = document.getElementById("hero-quote");
-const subEl = document.getElementById("hero-sub");
+let heroIndex = 0;
+const heroTitle = document.getElementById("hero-quote");
+const heroSub = document.getElementById("hero-sub");
 
-setInterval(() => {
-  titleEl.style.opacity = 0;
-  subEl.style.opacity = 0;
+function typeWriter(text, element, speed = 60) {
+  element.innerHTML = "";
+  let i = 0;
+
+  const interval = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, speed);
+}
+
+function revealWords(text, element) {
+  element.innerHTML = "";
+  text.split(" ").forEach((word, i) => {
+    const span = document.createElement("span");
+    span.textContent = word + " ";
+    span.classList.add("word");
+    span.style.animationDelay = `${i * 0.08}s`;
+    element.appendChild(span);
+  });
+}
+
+function changeHeroText() {
+  heroTitle.style.opacity = 0;
+  heroSub.style.opacity = 0;
 
   setTimeout(() => {
-    index = (index + 1) % quotes.length;
-    titleEl.textContent = quotes[index].title;
-    subEl.textContent = quotes[index].sub;
+    const current = heroQuotes[heroIndex];
 
-    titleEl.style.opacity = 1;
-    subEl.style.opacity = 1;
+    typeWriter(current.title, heroTitle);
+    revealWords(current.sub, heroSub);
+
+    heroTitle.style.opacity = 1;
+    heroSub.style.opacity = 1;
+
+    heroIndex = (heroIndex + 1) % heroQuotes.length;
   }, 600);
-}, 4000);
+}
+
+/* Initial load */
+changeHeroText();
+
+/* Rotate every 5 seconds */
+setInterval(changeHeroText, 5000);
 
 /* ===============================
    IMAGE CONFIG
@@ -151,4 +182,5 @@ orderButtons.forEach(btn => {
     window.open(url, "_blank");
   });
 });
+
 
