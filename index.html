@@ -112,49 +112,47 @@ if ("serviceWorker" in navigator) {
     <img src="assets/images/logo.jpg" alt="Logo">
     <h1>ART DREAMS</h1>
     <span>Entering the Experience</span>
+    <audio id="intro-sound" src="music/intro.mp3" preload="auto"></audio>
   </div>
 </div>
 
 <script>
 (function () {
   const intro = document.getElementById("cinematic-intro");
+  const sound = document.getElementById("intro-sound");
 
-  // Do NOT run on index.html
+  // Skip index.html completely
   if (window.location.pathname.includes("index.html")) {
     intro?.remove();
     return;
   }
 
-  // First visit check
+  // Already played in this session
   if (sessionStorage.getItem("cinematicPlayed")) {
     intro.remove();
-  } else {
-    sessionStorage.setItem("cinematicPlayed", "true");
+    return;
+  }
+
+  sessionStorage.setItem("cinematicPlayed", "true");
+
+  // Play sound softly
+  if (sound) {
+    sound.volume = 0.25;
+    sound.play().catch(() => {
+      // Autoplay blocked — fail silently (important)
+    });
+  }
+
+  // Remove intro after animation
+  setTimeout(() => {
+    intro.classList.add("fade-out");
+
     setTimeout(() => {
       intro.remove();
-    }, 4200);
-  }
+    }, 1200);
+  }, 3000);
 })();
 </script>
 
   <div id="scroll-progress"></div>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
