@@ -874,3 +874,8 @@ img {
     visibility: hidden;
   }
 }
+
+#cinematic-intro.fade-out {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
