@@ -113,9 +113,32 @@ if ("serviceWorker" in navigator) {
     <span>Entering the Experience</span>
   </div>
 </div>
-  
+
+<script>
+(function () {
+  const intro = document.getElementById("cinematic-intro");
+
+  // Do NOT run on index.html
+  if (window.location.pathname.includes("index.html")) {
+    intro?.remove();
+    return;
+  }
+
+  // First visit check
+  if (sessionStorage.getItem("cinematicPlayed")) {
+    intro.remove();
+  } else {
+    sessionStorage.setItem("cinematicPlayed", "true");
+    setTimeout(() => {
+      intro.remove();
+    }, 4200);
+  }
+})();
+</script>
+
   <div id="scroll-progress"></div>
 </html>
+
 
 
 
