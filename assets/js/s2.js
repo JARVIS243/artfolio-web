@@ -429,12 +429,9 @@ transition.classList.add(
 
 
 
-setTimeout(
-()=>{
-
+setTimeout(()=>{
 window.location.href =
 link.href;
-
 },
 500
 );
