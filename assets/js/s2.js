@@ -433,7 +433,7 @@ setTimeout(()=>{
 window.location.href =
 link.href;
 },
-500
+5
 );
 
 
